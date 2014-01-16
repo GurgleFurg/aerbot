@@ -12,6 +12,7 @@ import com.bellaire.aerbot.systems.CameraSystem;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import com.bellaire.aerbot.input.InputMethod;
+import com.bellaire.aerbot.Exceptions.HotTargetNotFoundException;
 
 public class Aerbot extends IterativeRobot {
 
