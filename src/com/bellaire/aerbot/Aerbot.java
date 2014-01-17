@@ -36,9 +36,12 @@ public class Aerbot extends IterativeRobot {
     public void autonomousPeriodic() {
         double speed;
         CameraSystem camera = environment.getCameraSystem();
+        double xCoord = camera.getXCoordinate();
         try{
-        speed = camera.getXCoordinate() - lastX;
+        speed = xCoord - lastX;
+        speed = speed / 480;
         environment.getWheelSystem().move(speed, speed);
+        lastX = xCoord;
         }catch(HotTargetNotFoundException e){}
         catch(NIVisionException e){}
     }
