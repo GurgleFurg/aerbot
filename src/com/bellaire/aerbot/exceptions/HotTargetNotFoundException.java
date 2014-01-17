@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.bellaire.aerbot.Exceptions;
+package com.bellaire.aerbot.exceptions;
 
 /**
  *
@@ -14,6 +14,6 @@ public class HotTargetNotFoundException extends Exception{
     
     public String getMessage()
     {
-        return "Aasdf";
+        return "No hot target found!";
     }
 }
