@@ -10,10 +10,9 @@ import com.bellaire.aerbot.controllers.AutonomousController;
 import com.bellaire.aerbot.controllers.OperatorController;
 import com.bellaire.aerbot.systems.CameraSystem;
 import edu.wpi.first.wpilibj.image.NIVisionException;
-import com.bellaire.aerbot.Exceptions.HotTargetNotFoundException;
+import com.bellaire.aerbot.exceptions.HotTargetNotFoundException;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import com.bellaire.aerbot.input.InputMethod;
-import com.bellaire.aerbot.Exceptions.HotTargetNotFoundException;
 
 public class Aerbot extends IterativeRobot {
 
@@ -37,14 +36,13 @@ public class Aerbot extends IterativeRobot {
     public void autonomousPeriodic() {
         double speed;
         CameraSystem camera = environment.getCameraSystem();
-        double xCoord = camera.getXCoordinate();
         try{
-        speed = xCoord - lastX;
-        speed = speed / 480;
+        speed = camera.getXCoordinate() - lastX;
         environment.getWheelSystem().move(speed, speed);
-        lastX = xCoord;
-        }catch(HotTargetNotFoundException e){}
-        catch(NIVisionException e){}
+        if(camera.getDistance() > 10)environment.getWheelSystem().move(1,1);
+        else if(camera.getDistance() < 5)environment.getWheelSystem().move(-1, -1);
+        else environment.getWheelSystem().move(0,0);
+        }catch(Exception e){}
     }
 
     public void teleopInit() {

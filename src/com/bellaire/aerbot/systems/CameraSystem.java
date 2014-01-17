@@ -9,7 +9,7 @@ package com.bellaire.aerbot.systems;
  *
  * @author Agro
  */
-import com.bellaire.aerbot.Exceptions.HotTargetNotFoundException;
+import com.bellaire.aerbot.exceptions.HotTargetNotFoundException;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.camera.AxisCameraException;
 import edu.wpi.first.wpilibj.image.BinaryImage;
@@ -45,6 +45,8 @@ public class CameraSystem implements RobotSystem {
 
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
+    
+    private double distance;
 
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
 
@@ -75,6 +77,10 @@ public class CameraSystem implements RobotSystem {
 
     }
 
+    public double getDistance()
+    {
+        return distance;
+    }
     public ColorImage getImage() {
         ColorImage image = null;
         try {
@@ -184,7 +190,7 @@ public class CameraSystem implements RobotSystem {
                     //To get measurement information such as sizes or locations use the
                     //horizontal or vertical index to get the particle report as shown below
                     ParticleAnalysisReport distanceReport = filteredImage.getParticleAnalysisReport(target.verticalIndex);
-                    double distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
+                    distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
                     if (target.Hot) {
                         System.out.println("Hot target located");
                         System.out.println("Distance: " + distance);
