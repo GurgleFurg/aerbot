@@ -10,6 +10,7 @@ import com.bellaire.aerbot.controllers.AutonomousController;
 import com.bellaire.aerbot.controllers.OperatorController;
 import com.bellaire.aerbot.systems.CameraSystem;
 import edu.wpi.first.wpilibj.image.NIVisionException;
+import com.bellaire.aerbot.Exceptions.HotTargetNotFoundException;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import com.bellaire.aerbot.input.InputMethod;
 import com.bellaire.aerbot.Exceptions.HotTargetNotFoundException;
