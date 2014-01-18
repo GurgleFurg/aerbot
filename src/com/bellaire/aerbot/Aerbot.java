@@ -37,8 +37,12 @@ public class Aerbot extends IterativeRobot {
         double speed;
         CameraSystem camera = environment.getCameraSystem();
         try {
-            speed = camera.getXCoordinate() - lastX;
+			
+			double xCoord = camera.getXCoordinate();
+            speed = xCoord - lastX;
             environment.getWheelSystem().move(speed, speed);
+			lastX = xCoord;
+			
             /*if (camera.getDistance() > 10) {
                 environment.getWheelSystem().move(1, -1);
             } else if (camera.getDistance() < 5) {
