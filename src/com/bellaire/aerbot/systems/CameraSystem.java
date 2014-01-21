@@ -20,6 +20,10 @@ public class CameraSystem implements RobotSystem {
     public void destroy() {
         
     }
+    public double getXCoordinate(){
+        //we need this method
+        return 0.0;
+    }
 
     public boolean foundTarget() {
         ColorImage snapshot = null;
